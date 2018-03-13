@@ -1,6 +1,6 @@
 {
-  "name": "draft-js-plugins",
-  "version": "0.0.0",
+  "name": "@sciensio/draft-js-plugins",
+  "version": "1.0.0",
   "description": "A Plugin Architecture on top of Draft.JS",
   "author": {
     "name": "Nik Graf",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nikgraf/draft-js-plugins.git"
+    "url": "https://github.com/sciensio/draft-js-plugins.git"
   },
   "main": "lib/index.js",
   "keywords": [
@@ -107,6 +107,7 @@
     "loader-utils": "^1.0.2",
     "lodash.escaperegexp": "^4.1.2",
     "lodash.keys": "^4.2.0",
+    "material-ui-icons": "^1.0.0-beta.36",
     "prepend-http": "1.0.4",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",

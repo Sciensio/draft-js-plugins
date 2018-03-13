@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { IconButton } from 'material-ui';
+import { Mood } from 'material-ui-icons';
 import strategy from 'emojione/emoji.json';
 import createEmojisFromStrategy from '../../utils/createEmojisFromStrategy';
 import defaultEmojiGroups from '../../constants/defaultEmojiGroups';
@@ -56,24 +58,27 @@ export default class EmojiSelect extends Component {
     e.nativeEvent.stopImmediatePropagation();
   };
 
-  onButtonMouseUp = () => (
-    this.state.isOpen ? this.closePopover() : this.openPopover()
+  onButtonMouseUp = (e) => (
+    this.state.isOpen ? this.closePopover() : this.openPopover(e)
   );
 
   // Open the popover
-  openPopover = () => {
+  openPopover = (e) => {
     if (!this.state.isOpen) {
       this.setState({
         isOpen: true,
+        anchorEl: e.target,
       });
     }
   };
 
   // Close the popover
   closePopover = () => {
+    console.log('emojiSelect closePopover');
     if (this.state.isOpen) {
       this.setState({
         isOpen: false,
+        anchorEl: null,
       });
     }
   };
@@ -96,13 +101,16 @@ export default class EmojiSelect extends Component {
 
     return (
       <div className={theme.emojiSelect} onClick={this.onClick}>
-        <button
+        <IconButton onClick={this.openPopover}>
+          <Mood />
+        </IconButton>
+        {/* <button
           className={buttonClassName}
           onMouseUp={this.onButtonMouseUp}
           type="button"
         >
           {selectButtonContent}
-        </button>
+        </button> */}
         <Popover
           cacheBustParam={cacheBustParam}
           imagePath={imagePath}
@@ -114,6 +122,8 @@ export default class EmojiSelect extends Component {
           toneSelectOpenDelay={toneSelectOpenDelay}
           isOpen={this.state.isOpen}
           useNativeArt={useNativeArt}
+          anchorElement={this.state.anchorEl}
+          onClose={this.closePopover}
         />
       </div>
     );
