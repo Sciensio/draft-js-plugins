@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Popover as MuiPopover } from 'material-ui';
 import addEmoji from '../../../modifiers/addEmoji';
 import Groups from './Groups';
 import Nav from './Nav';
@@ -18,13 +17,10 @@ export default class Popover extends Component {
     toneSelectOpenDelay: PropTypes.number.isRequired,
     isOpen: PropTypes.bool,
     useNativeArt: PropTypes.bool,
-    anchorElement: PropTypes.object,
-    onClose: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     isOpen: false,
-    anchorElement: null,
   };
 
   state = {
@@ -79,7 +75,6 @@ export default class Popover extends Component {
   };
 
   onGroupSelect = (groupIndex) => {
-    console.log('groupSelect clicked', groupIndex);
     this.groups.scrollToGroup(groupIndex);
   };
 
@@ -174,8 +169,6 @@ export default class Popover extends Component {
       emojis,
       isOpen = false,
       useNativeArt,
-      anchorElement,
-      onClose,
     } = this.props;
     const className = isOpen ?
       theme.emojiSelectPopover :
@@ -183,14 +176,11 @@ export default class Popover extends Component {
     const { activeGroup } = this.state;
 
     return (
-      <MuiPopover
-        // className={className}
-        open={isOpen}
+      <div
+        className={className}
         onMouseDown={this.onMouseDown}
         onWheel={this.onWheel}
         ref={(element) => { this.container = element; }}
-        anchorEl={anchorElement}
-        // onClose={onClose}
       >
         <h3 className={theme.emojiSelectPopoverTitle}>
           {groups[activeGroup].title}
@@ -216,7 +206,7 @@ export default class Popover extends Component {
           onGroupSelect={this.onGroupSelect}
         />
         {this.renderToneSelect()}
-      </MuiPopover>
+      </div>
     );
   }
 }

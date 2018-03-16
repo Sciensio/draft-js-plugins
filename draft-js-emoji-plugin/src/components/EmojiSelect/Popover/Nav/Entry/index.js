@@ -22,10 +22,8 @@ export default class Entry extends Component {
   };
 
   onMouseUp = () => {
-    if (this.mouseDown) {
-      this.mouseDown = false;
-      this.props.onGroupSelect(this.props.groupIndex);
-    }
+    this.mouseDown = false;
+    this.props.onGroupSelect(this.props.groupIndex);
   };
 
   mouseDown = false;
