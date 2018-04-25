@@ -99,7 +99,7 @@
   "dependencies": {
     "decorate-component-with-props": "^1.1.0",
     "draft-js": "^0.10.5",
-    "emojione": "^3.1.2",
+    "emojione": "^2.2.7",
     "eslint-plugin-import": "^2.10.0",
     "find-with-regex": "^1.0.2",
     "immutable": "^3.8.1",
